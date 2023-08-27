@@ -9,15 +9,18 @@ const port = process.env.PORT
 const server = express()
 const allowedOrigins = ['https://connectblog-com.preview-domain.com'];
 
-server.use(cors({
-    origin: function (origin, callback) {
-        if (allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
-}));
+// server.use(cors({
+//     origin: function (origin, callback) {
+//         if (allowedOrigins.includes(origin)) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     }
+// }));
+
+server.use(cors())
+
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
 server.use('/', routers) 
